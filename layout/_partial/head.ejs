@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%
+    var title = page.title;
+
+    if (is_archive()){
+        title = __('archive_a');
+
+        if (is_month()){
+        title += ': ' + page.year + '/' + page.month;
+        } else if (is_year()){
+        title += ': ' + page.year;
+        }
+    } else if (is_category()){
+        title = __('category') + ': ' + page.category;
+    } else if (is_tag()){
+        title = __('tag') + ': ' + page.tag;
+    }
+    %>
+    <title><% if (title){ %><%= title %> | <% } %><%= theme.header.title %></title>
+    <meta charset="utf-8">
+    <% if (theme.header.favicon){ %>
+        <link rel="icon" href="<%- url_for(theme.header.favicon) %>">
+    <% } %>
+    <%- css('css/minireset.min.css') %>
+    <%- css('css/all.min.css') %>
+    <%- css('css/csshake.min.css') %>
+    <%- css('css/hljs/'+theme.hlcss+'.css') %>
+    <%- css('styl/main') %>
+    <%- js('js/jquery.min.js') %>
+    <%- js('js/highlight.min.js') %>
+</head>

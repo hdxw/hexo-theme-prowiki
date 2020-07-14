@@ -1,0 +1,23 @@
+<% if (page.current != page.total || page.posts.length > 30){ %>
+    <%- partial('_partial/turn_page') %>
+<% } %>
+
+<%- css('styl/archive') %>
+<div class="archive-wrapper">
+    <% var year = 0; %>
+    <% page.posts.each(function(post, i){ %>
+        <% if (year != date(post.date,'YYYY')){ %>
+            <div class="archive_year">
+                <% year = date(post.date,'YYYY'); %>
+                <h2><a href="<%- url_for('archives/'+year) %>"><%= year %></a></h2>
+                <hr>
+            </div>
+        <% } %>
+        <div class="archive_post">
+            <a href="<%- url_for('archives/'+date(post.date,'YYYY/MM')) %>"><%- date(post.date,'MM-DD') %></a>
+            <a href="<%- url_for(post.path) %>" class="shake shake-little"><%= post.title %></a>
+        </div>
+    <% }) %>
+</div>
+
+<%- partial('_partial/turn_page') %>

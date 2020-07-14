@@ -1,0 +1,18 @@
+<% if (page.path===config.category_dir+'/index.html'){ %>
+    <%- include('category') %>
+<% }else if (page.path===config.tag_dir+'/index.html'){ %>
+    <%- include('tag') %>
+<% }else{ %>
+    <article>
+        <%- partial('_partial/post/title', {post:page}) %>
+        <hr>
+        <div class="article-entry">
+            <%- partial('_partial/post/links') %>
+            <%- page.content %>
+        </div>
+        <div class="article-copyright">
+            <%- partial('_partial/post/copyright') %>
+        </div>
+    </article>
+    <%- partial('_partial/post/toc') %>
+<% } %>

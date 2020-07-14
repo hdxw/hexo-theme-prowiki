@@ -1,0 +1,7 @@
+<% if (theme.copyright.enable){ %>
+    <blockquote>
+        <p>
+            <%- theme.copyright.content.join("<br>").replace(new RegExp("permalink","gm"),page.permalink) %>
+        </p>
+    </blockquote>
+<% } %>

@@ -1,0 +1,45 @@
+<%- css('styl/category') %>
+<% if (page.category){ %>
+
+    <div class="category_head">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+        <span><%= page.category %></span>
+    </div>
+    <br>
+    
+    <% page.posts.each(function(post, i){ %>
+        <div class="category">
+            <div class="category_title">
+                <a href="<%- url_for(post.path) %>">
+                    <%= (config.category_generator.per_page*(page.current-1)+i+1) + '. ' + post.title %>
+                </a>
+            </div>
+            <% if (post.tags && post.tags.length){ %>
+                <div class="category_tags">
+                    <%- list_tags(post.tags, {
+                        show_count: false,
+                        transform(str) {
+                          return '<i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>'+str;
+                        }
+                    }) %>
+                </div>
+            <% } %>
+            
+        </div>
+    <% }) %>
+
+    <%- partial('_partial/turn_page') %>
+
+<% }else{ %>
+    <div class="category_index">
+        <div class="category-list">
+            <% site.categories.sort('name').each(function(category,i){ %>
+                <div class="category-list-item">
+                    <i class="fa fa-folder" aria-hidden="true"></i>
+                    <a class="category-list-link" href="<%- url_for(category.path) %>"><%= category.name %></a>
+                    <span class="category-list-count"><%- category.posts.length %></span>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+<% } %>

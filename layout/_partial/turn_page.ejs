@@ -1,0 +1,54 @@
+<% var page_margin = parseInt((theme.page_show-1)/2); %>
+<% var page_from = page.current > page_margin ? page.current - page_margin : 1; %>
+<% var page_to = page.current <= page.total-page_margin ? page.current + page_margin : page.total; %>
+
+<% if (page_to - page_from < theme.page_show - 1){ %>
+    <% if (page_from == 1 && page_to < page.total){ %>
+        <%# 总数不够page_to右移 %>
+        <% page_to = page_from + theme.page_show - 1 < page.total ? page_from + theme.page_show - 1 : page.total; %>
+    <% }else if (page_to == page.total && page_from > 1){ %>
+        <%# 总数不够page_from左移 %>
+        <% page_from = page_to - theme.page_show + 1 > 1? page_to - theme.page_show + 1 : 1; %>
+    <% }else if(page_from > 1 && page_to < page.total){ %>
+        <%# 总数为偶数，中间向边缘凑，或者向左凑 %>
+        <% if (page.current - page_from <= page_to - page.current){ %>
+            <% page_from -= 1; %>
+        <% }else{ %>
+            <% page_to += 1; %>
+        <% } %>
+    <% } %>
+<% } %>
+
+<% var page_path = ''; %>
+<% if (page.archive){ %>
+    <% page_path = '/'+config.archive_dir; %>
+    <% if (page.year){ %>
+        <% page_path += '/' + page.year; %>
+        <% if (page.month){ %>
+            <% page_path += '/' + (page.month < 10?'0'+page.month:page.month); %>
+        <% } %>
+    <% } %>
+<% }else if (page.category){ %>
+    <% page_path = '/'+config.category_dir+'/'+page.category; %>
+<% }else if (page.tag){ %>
+    <% page_path = '/'+config.tag_dir+'/'+page.tag; %>
+<% } %>
+<div class="turn_page">
+    <% if (page_to < page.total){ %>
+        <a class="page_more">...</a>
+    <% } %>
+
+<% for (var i=page_to;i>=page_from;i--){ %>
+    <% if (i==page.current){ %>
+        <a class="page_current"><%= i %></a>
+    <% }else if (i==1){ %>
+        <a href="<%- url_for(page_path) %>"><%= i %></a>
+    <% }else{ %>
+        <a href="<%- url_for(page_path+'/'+config.pagination_dir+'/'+i) %>"><%= i %></a>
+    <% } %>
+<% } %>
+
+    <% if (page_from > 1){ %>
+        <div><a class="page_more">...</a></div>
+    <% } %>
+</div>

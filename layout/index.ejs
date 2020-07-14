@@ -1,0 +1,13 @@
+<% if (page.current != page.total || page.posts.length > 8){ %>
+    <%- partial('_partial/turn_page') %>
+<% } %>
+
+<% page.posts.each(function(post, i){ %>
+    <div class="post-wrapper">
+        <article>
+            <%- partial('_partial/post/title', {post:post}) %>
+        </article>
+    </div>
+<% }) %>
+
+<%- partial('_partial/turn_page') %>

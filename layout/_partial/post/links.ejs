@@ -1,0 +1,21 @@
+<% if (page.links){ %>
+    <div class="friends_links">
+    <% for(var j = 0,len=page.links.length; j < len; j++) { %>
+        <h2 style="text-align: center;"><%= page.links[j].group %></h2>
+        <div class="link_items">
+            <% for(var k = 0,len2=page.links[j].items.length; k < len2; k++) { %>
+            <div class="link_item">
+                <a href="<%= page.links[j].items[k].url %>">
+                <% if (page.links[j].items[k].avatar){ %>
+                    <img src="<%= page.links[j].items[k].avatar %>" />
+                <% }else{ %>
+                    <img src="<%- url_for('img/default.png') %>" />
+                <% } %>
+                    <p class="item_name"><%= page.links[j].items[k].name %></p>
+                </a>
+            </div>
+            <% } %>
+        </div>
+    <% } %>
+    </div>
+<% } %>

@@ -1,0 +1,47 @@
+header:
+  title: HTW
+  favicon: /img/favicon.ico
+  version: 0.9
+footer:
+  copyright: 河东小伍
+  beian: 冀ICP备00000000号
+
+# 文章作者列表
+authors: 
+  anonymous: /img/default.png
+  河东小伍: /img/hdxw.png
+
+# 顶部菜单
+menus: 
+  首页: /
+  归档: /archives
+  分类: /categories
+  标签: /tags
+  友链: /friends
+  关于: /about
+
+# 跳页标签显示个数，建议为奇数（对称）
+page_show: 5
+
+# 代码高亮样式
+# a11y-dark, a11y-light, agate, androidstudio, an-old-hope, arduino-light, arta, ascetic,
+# atelier-cave-dark, atelier-dune-dark, atelier-estuary-dark, atelier-forest-dark, atelier-heath-dark,
+# atelier-lakeside-dark, atelier-plateau-dark, atelier-savanna-dark, atelier-seaside-dark, atelier-sulphurpool-dark,
+# atom-one-dark, atom-one-dark-reasonable, brown-paper, codepen-embed, color-brewer, darcula, dark,
+# default, docco, dracula, far, foundation, github, github-gist, gml, googlecode, gradient-dark,
+# grayscale, gruvbox-dark, hopscotch, hybrid, idea, ir-black, isbl-editor-dark, kimbie.dark, lightfair,
+# lioshi, magula, mono-blue, monokai, monokai-sublime, night-owl, nnfx-dark, nord, obsidian, ocean,
+# paraiso-dark, pojoaque, purebasic, qtcreator_dark, railscasts, rainbow, routeros, school-book, shades-of-purple,
+# solarized-dark, srcery, sunburst, tomorrow-night, tomorrow-night-blue, tomorrow-night-bright,
+# tomorrow-night-eighties, vs, vs2015, xcode, xt256, zenburn
+hlcss: lioshi
+
+toc:
+  list_number: false # 文章目录是否显示编号
+
+# 文章底部版权声明信息
+copyright:
+  enable: true
+  content: # permalink会被替换为root/_config.yml中配置的url域名的当前页面连接
+    - '版权声明：本文为「河东小伍」的原创文章，博客内容遵循 署名-非商业性使用-相同方式共享 协议。'
+    - '本文永久链接是：permalink'

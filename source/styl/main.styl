@@ -1,0 +1,39 @@
+@font-face
+  font-family: pht
+  src: url(../webfonts/puhuiti.ttf)
+// 滚动条
+html ::-webkit-scrollbar
+  height: 4px
+  width: 4px
+
+html ::-webkit-scrollbar-track-piece
+  background: transparent
+
+html ::-webkit-scrollbar-thumb
+  background: #33bbff
+  cursor: pointer
+  border-radius: 2px
+
+html ::-webkit-scrollbar-thumb:hover
+  background: #33ffbb
+
+body
+  background: #3F3B3A
+  color: #f3f3f3
+  font-family: pht
+//   background-image: linear-gradient(black 2px, transparent 0),
+//                 linear-gradient(90deg, black 2px, transparent 0),
+//                 linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 0),
+//                 linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 0)
+//   background-size: 50px 50px, 50px 50px,
+//                 10px 10px, 10px 10px
+
+a
+  text-decoration: none
+  color: #f3f3f3
+
+@import "_partial/header"
+@import "_partial/content"
+
+@import "_partial/footer"
+

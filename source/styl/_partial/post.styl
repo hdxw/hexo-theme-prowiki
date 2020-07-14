@@ -1,0 +1,114 @@
+// 文章内容样式
+.article-entry
+  margin-top: 20px
+  word-break: auto
+  h1,h2,h3,h4,h5,h6
+    // 锚定位固定偏移50px
+    padding-top: 50px
+    color: #33ffbb
+    // user-select: none
+  h1
+    margin-top: -30px
+    font-size: 34px
+  h2
+    margin-top: -35px
+    font-size: 30px
+  h3
+    margin-top: -35px
+    font-size: 24px
+  h4
+    margin-top: -40px
+    font-size: 20px
+  h5
+    margin-top: -40px
+    font-size: 18px
+  h6
+    margin-top: -40px
+    font-size: 16px
+  p
+    margin-top: 10px
+    margin-bottom: 10px
+    font-size: 16px
+    line-height: 30px
+  >p img
+    max-width: 800px
+    max-height: 500px
+    margin: 18px
+    background-color: #f3f3f3
+  figure
+    margin: 10px 0 10px 0
+    line-height: 16px
+    border: #f3f3f3 solid 1px
+    figcaption
+      background-color: #555555
+      color: #bbbbbb
+      font-size: 14px
+      line-height: 20px
+      text-indent: 1em
+    .gutter
+      width: 25px
+      text-align: right
+      border-right: #f3f3f3 solid 1px
+      padding-right: 5px
+    .code
+      width: 953px
+      code
+        padding-top: 10px
+        max-width: 953px
+        overflow-x: scroll
+  .hbe-input-container label
+    color: #f3f !important
+  >table
+    // 表格样式
+    max-width: 80%
+    th,td
+      font-size: 16px
+      line-height: 30px
+      border: 1px solid #ccc
+      padding: 0 1em 0 1em
+      &:hover
+        background-color: rgba(255, 255, 255, 0.3)
+  >ul,>ul ul
+    list-style: inside
+    margin: 8px 0 8px 1.5em
+  >ol
+    margin-left: 2.5em
+  code
+    background-color: #303030
+  .friends_links .link_items .link_item
+    width: 118px
+    height: 140px
+    display: inline-table
+    border: #ccc solid 1px
+    border-radius: 10px
+    margin: 20px
+    overflow: hidden
+    &:hover
+      box-shadow: 3px 3px 3px rgba(250,250,250,0.2)
+    a
+      display: block
+      width: 100%
+      height: 100%
+      img
+        margin: 18px
+        background-color: #f3f3f3
+        width: 80px
+        height: 80px
+        border-radius: 40px
+        border: #fff solid 1px
+        margin-bottom: 0
+        transition: all 500ms
+        &:hover
+          transform: rotate(360deg)
+      p
+        margin: 0
+        text-align: center
+    .item_name a
+      display: block
+      width: 100%
+      line-height: 20px
+      text-align: center
+
+// 底部版权声明
+.article-copyright
+  margin-top: 50px
