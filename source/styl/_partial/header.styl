@@ -6,29 +6,24 @@ header
   box-shadow: 0 2px 2px rgba(255, 255, 255, 0.5)
   float: left
   position: fixed
-
-header .outer
-  width: 1000px
-  height: 100%
-  margin: 0 auto
-
-header .inner
-  line-height: 48px
-  float: left
-  padding-left: 10px
-  padding-right: 10px
-
-header .inner a
-  color: #bbff33
-
-header .inner .logo-wrap
-  margin-top: -0.3em
-
-header .inner .main-nav a
-  display: block
-  width: 60px
-  text-align: center
-  float: left
-
-header .inner .main-nav a:hover
-  background-color: rgba(22, 22, 22, 0.4)
+  z-index: 9999
+  .outer
+    width: 1000px
+    height: 100%
+    margin: 0 auto
+  .inner
+    line-height: 48px
+    float: left
+    padding-left: 10px
+    padding-right: 10px
+    a
+      color: #bbff33
+    .logo-wrap
+      margin-top: -0.3em
+    .main-nav a
+      display: block
+      width: 60px
+      text-align: center
+      float: left
+      &:hover
+        background-color: rgba(22, 22, 22, 0.4)

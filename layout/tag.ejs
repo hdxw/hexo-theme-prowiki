@@ -9,7 +9,7 @@
     <% page.posts.each(function(post, i){ %>
         <div class="tag">
             <div class="tag_title">
-                <a href="<%- url_for(post.path) %>">
+                <a href="<%- url_for(post.link?post.link:post.path) %>">
                     <%= (config.tag_generator.per_page*(page.current-1)+i+1) + '. ' + post.title %>
                 </a>
             </div>

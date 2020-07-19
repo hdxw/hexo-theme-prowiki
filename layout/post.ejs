@@ -7,7 +7,9 @@
         <%- partial('_partial/post/title', {post:page}) %>
         <hr>
         <div class="article-entry">
+            <%- partial('_partial/post/gallery') %>
             <%- partial('_partial/post/links') %>
+            
             <%- page.content %>
         </div>
         <div class="article-copyright">

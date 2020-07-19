@@ -5,7 +5,7 @@
     var title = page.title;
 
     if (is_archive()){
-        title = __('archive_a');
+        title = __('archives');
 
         if (is_month()){
         title += ': ' + page.year + '/' + page.month;
@@ -27,7 +27,9 @@
     <%- css('css/all.min.css') %>
     <%- css('css/csshake.min.css') %>
     <%- css('css/hljs/'+theme.hlcss+'.css') %>
+    <%- css('css/jquery.fancybox.min.css') %>
     <%- css('styl/main') %>
     <%- js('js/jquery.min.js') %>
     <%- js('js/highlight.min.js') %>
+    <%- js('js/jquery.fancybox.min.js') %>
 </head>

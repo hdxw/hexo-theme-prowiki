@@ -1,0 +1,43 @@
+<% if (page.photos && page.photos.length){ %>
+    <div class="gallery_photos">
+        <div class="show_left">
+            <a href="javascript:show_left();">&lt;</a>
+        </div>
+        <% for(var j = 0,len=page.photos.length; j < len; j++) { %>
+            <div class="photo_item<%= j==0?' photo_show':'' %>">
+                <img src="<%- url_for(page.photos[j]) %>" />
+            </div>
+        <% } %>
+        <div class="show_right">
+            <a href="javascript:show_right();">&gt;</a>
+        </div>
+    </div>
+    <script>
+        var gallery_index = 0;
+        function show_left(){
+            var photo_items = $(".photo_item");
+            gallery_index -= 1;
+            if(gallery_index < 0){
+                gallery_index = photo_items.length - 1;
+            }
+            toggle_class(photo_items,gallery_index);
+        }
+        function show_right(){
+            var photo_items = $(".photo_item");
+            gallery_index += 1;
+            if(gallery_index >= photo_items.length){
+                gallery_index = 0;
+            }
+            toggle_class(photo_items,gallery_index);
+        }
+        function toggle_class(photo_items, gallery_index){
+            photo_items.each(function(index,photo){
+                if(index == gallery_index){
+                    $(photo).addClass("photo_show");
+                }else{
+                    $(photo).removeClass("photo_show");
+                }
+            })
+        }
+    </script>
+<% } %>

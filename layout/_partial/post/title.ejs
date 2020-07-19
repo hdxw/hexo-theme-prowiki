@@ -1,5 +1,5 @@
 <div class="article-title">
-    <h2><a href="<%- url_for(post.path) %>" class="shake shake-little"><%= post.title %></a></h2>
+    <h2><a href="<%- url_for(post.link?post.link:post.path) %>" class="shake shake-little" title="<%= post.title %>"><%= post.title %></a></h2>
     <div class="meta_box">
     
         <% var author = post.author?post.author:"anonymous"; %>

@@ -2,9 +2,14 @@
 .article-entry
   margin-top: 20px
   word-break: auto
+  a[href]
+    color: #ffff00
+    &:hover
+      color: #ffbb33
   h1,h2,h3,h4,h5,h6
     // 锚定位固定偏移50px
     padding-top: 50px
+    margin-bottom: 10px
     color: #33ffbb
     // user-select: none
   h1
@@ -25,6 +30,11 @@
   h6
     margin-top: -40px
     font-size: 16px
+  dl
+    margin: 0 20px
+    line-height: 1.6em
+  dt
+    font-weight: bold
   p
     margin-top: 10px
     margin-bottom: 10px
@@ -33,11 +43,24 @@
   >p img
     max-width: 800px
     max-height: 500px
-    margin: 18px
+    margin-top: 10px
+    border: 0
     background-color: #f3f3f3
+  code
+    padding: 0 0.5em
+    display: inline-block
+    line-height: 20px
+    background-color: #606060
+  pre
+    padding: 15px 20px
+    margin: 10px 0
+    background-color: #303030
+    code
+      background-color: transparent
   figure
-    margin: 10px 0 10px 0
-    line-height: 16px
+    margin: 15px 0 15px 0
+    line-height: 18px
+    font-size: 16px
     border: #f3f3f3 solid 1px
     figcaption
       background-color: #555555
@@ -45,19 +68,73 @@
       font-size: 14px
       line-height: 20px
       text-indent: 1em
-    .gutter
-      width: 25px
-      text-align: right
-      border-right: #f3f3f3 solid 1px
-      padding-right: 5px
-    .code
-      width: 953px
-      code
-        padding-top: 10px
-        max-width: 953px
-        overflow-x: scroll
+      a
+        float: right
+        margin-right: 10px
+    table
+      table-layout:fixed
+      width: 100%
+      .gutter
+        // 左侧宽度固定，代码不设宽度（配合table 100%）
+        width: 25px
+        text-align: right
+        border-right: #f3f3f3 solid 1px
+        padding-right: 5px
+        color: #aaa
+        pre
+          // 属性覆盖
+          padding: 0
+          margin: 0
+          background-color: transparent
+      .code pre
+        padding: 0
+        margin: 0
+        code
+          // 向左对齐，上下居中
+          padding: 11px 0.5em 0.5em 0.5em !important
+          overflow-x: scroll
+          background: #303030 !important
+          // 属性覆盖
+          display: block
+          line-height: 18px
+          mark
+            background-color: #606060
   .hbe-input-container label
-    color: #f3f !important
+    // 加密插件
+    color: #6f6 !important
+    font-weight: bold
+    text-indent: 1em
+  .video-container
+    // 视频
+    height: 300px
+    text-align: center
+    iframe
+      width: 600px
+      height: 300px
+  .caption
+    // 图片fancybox-alt text
+    color: #999;
+    display: block;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    position: relative;
+    text-align: center;
+    &[href]:hover
+      text-decoration: underline
+  .fancybox
+    display: block
+    text-align: center
+  .pullquote
+    text-align: left
+    width: 45%
+    &.left
+      margin-left: 0.5em
+      margin-right: 1em
+      float: left
+    &.right
+      margin-right: 0.5em
+      margin-left: 1em
+      float: right
   >table
     // 表格样式
     max-width: 80%
@@ -68,13 +145,22 @@
       padding: 0 1em 0 1em
       &:hover
         background-color: rgba(255, 255, 255, 0.3)
-  >ul,>ul ul
-    list-style: inside
+      &[align="center"]
+        text-align: center
+      &[align="left"]
+        text-align: left
+      &[align="right"]
+        text-align: right
+  ul,ol
     margin: 8px 0 8px 1.5em
-  >ol
-    margin-left: 2.5em
-  code
-    background-color: #303030
+    li
+      line-height: 30px
+      p:first
+        display: inline
+  ul
+    list-style: disc
+  ol
+    list-style: decimal
   .friends_links .link_items .link_item
     width: 118px
     height: 140px
@@ -103,11 +189,42 @@
       p
         margin: 0
         text-align: center
-    .item_name a
+    .item_name
       display: block
       width: 100%
       line-height: 20px
       text-align: center
+      margin-top: -30px
+  .gallery_photos
+    width: 100%
+    height: 500px
+    position: relative
+    .show_left,.show_right
+      width: 30px
+      height 100%
+      position: absolute
+      background-color: rgba(0,0,0,0.1)
+      z-index: 2
+      &:hover
+        background-color: rgba(0,0,0,0.2)
+      a
+        width: 100%
+        height: 100%
+        display: block
+        line-height: 500px
+        text-align: center
+        user-select: none
+        color:  rgba(255,255,255,0.4)
+    .show_right
+      margin-left: 950px
+    .photo_item
+      margin: 0 auto
+      position: absolute
+      img
+        width: 980px
+        height: 500px
+    .photo_show
+      z-index: 1
 
 // 底部版权声明
 .article-copyright

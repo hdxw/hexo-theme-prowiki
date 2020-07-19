@@ -1,12 +1,13 @@
 <% var plain_content = page.origin ? page.origin : page.content; %>
 <% if(plain_content && toc(plain_content).length > 0){ %>
     <section id="toc-div" <% if (page.encrypt) { %>style="display: none;" <% } %>>
-        <%- toc(plain_content, {
-            list_number: theme.toc.list_number
-        }) %>
+        <%- toc(plain_content, {list_number: theme.toc.list_number}) %>
     </section>
 <% } %>
     <script>
+        if($("#toc-div >li").length > 0){
+            $("#toc-div >li").appendTo($("#toc-div >ol:first"));
+        }
         function gotohn(id){document.getElementById(id).scrollIntoView();}
         $(".toc-link").each(function(i,link){
             $(link).attr("href","javascript:gotohn('"+$(link).attr('href').substring(1)+"');");

@@ -15,7 +15,7 @@
         <% } %>
         <div class="archive_post">
             <a href="<%- url_for('archives/'+date(post.date,'YYYY/MM')) %>"><%- date(post.date,'MM-DD') %></a>
-            <a href="<%- url_for(post.path) %>" class="shake shake-little"><%= post.title %></a>
+            <a href="<%- url_for(post.link?post.link:post.path) %>" class="shake shake-little"><%= post.title %></a>
         </div>
     <% }) %>
 </div>
