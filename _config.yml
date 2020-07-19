@@ -1,7 +1,7 @@
 header:
   title: HTW
   favicon: /img/favicon.ico
-  version: 1.0
+  version: '1.0'
 footer:
   copyright: 河东小伍
   beian: 冀ICP备00000000号
