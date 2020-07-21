@@ -2,13 +2,13 @@
   <div class="outer">
     <div class="inner">
       <h1 class="logo-wrap">
-        <a><%= theme.header.title %> ProWiki<b><sup><%- theme.header.version %></sup></b></a>
+        <a><%= config.title %><b><sup><%- theme.header.version %></sup></b></a>
       </h1>
     </div>
     <div class="inner">
       <nav class="main-nav">
-        <% for (var i in theme.menus){ %>
-          <a href="<%- url_for(theme.menus[i]) %>"><%= i %></a>
+        <% for (var key in theme.menus){ %>
+          <a href="<%- url_for(theme.menus[key]) %>"><%= key %></a>
         <% } %>
       </nav>
     </div>

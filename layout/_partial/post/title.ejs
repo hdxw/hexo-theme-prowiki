@@ -2,8 +2,13 @@
     <h2><a href="<%- url_for(post.link?post.link:post.path) %>" class="shake shake-little" title="<%= post.title %>"><%= post.title %></a></h2>
     <div class="meta_box">
     
-        <% var author = post.author?post.author:"anonymous"; %>
-        <% var headimg = theme.authors[author]?theme.authors[author]:theme.authors["anonymous"]; %>
+        <% var author = post.author?post.author:''; %>
+        <% for(var key in theme.authors){ %>
+            <% if (author === ''){ %>
+                <% author = key;break; %>
+            <% } %>
+        <% } %>
+        <% var headimg = theme.authors[author]; %>
         <div class="meta meta_auth">
             <img src="<%- url_for(headimg) %>" alt="head" />
             <p><%= author %></p>

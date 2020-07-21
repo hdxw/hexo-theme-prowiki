@@ -3,13 +3,64 @@
     <section id="toc-div" <% if (page.encrypt) { %>style="display: none;" <% } %>>
         <%- toc(plain_content, {list_number: theme.toc.list_number}) %>
     </section>
+    <section id="gohome" style="display: none;"><a>顶</a></section>
 <% } %>
     <script>
-        if($("#toc-div >li").length > 0){
-            $("#toc-div >li").appendTo($("#toc-div >ol:first"));
+        function get_top_by_link(link){
+            var hnid = "#" + $(link).attr("data");
+            if ($(hnid).length > 0){
+                return $(hnid).offset().top;
+            }else{
+                return 0;
+            }
         }
-        function gotohn(id){document.getElementById(id).scrollIntoView();}
-        $(".toc-link").each(function(i,link){
-            $(link).attr("href","javascript:gotohn('"+$(link).attr('href').substring(1)+"');");
+        //go to hn
+        function gotohn(link){
+            $("html,body").animate({scrollTop: get_top_by_link(link) }, 300);
+        }
+        //页面滚动
+        function update(){
+            var scrollH = $(window).scrollTop();
+            if($(".toc-link")){
+                $(".toc-link").each(function(i,link){
+                    var mdHeight = get_top_by_link(link);
+                    if(mdHeight < scrollH + 50){
+                        //高亮导航菜单
+                        $('.toc-link').removeClass('on');
+                        $(link).addClass('on');
+                    }
+                });
+            }
+            if(scrollH < 200){
+                $("#gohome").css("display","none");
+            }else{
+                $("#gohome").css("display","block");
+            }
+        }
+        $(function(){
+            //修复部分锚点从属关系
+            if($("#toc-div >li").length > 0){
+                $("#toc-div >li").appendTo($("#toc-div >ol:first"));
+            }
+            //返回顶部
+            $('#gohome').click(function(){
+                $("html,body").animate({scrollTop: 0}, 300);
+                return false;
+            })
+            //遍历锚点
+            $(".toc-link").each(function(i,link){
+                $(link).attr("data",$(link).attr('href').substring(1));
+                $(link).attr("href","javascript:void(0);");
+                $(link).attr("onclick","gotohn(this);");
+            })
+            //绑定滚动事件
+            $(window).bind('scroll', update);
+            //初始化toc
+            var first_toc = $(".toc-link")[0];
+            var first_scroll = get_top_by_link(first_toc);
+            var window_scroll = $(window).scrollTop();
+            if(window_scroll <= first_scroll){
+                $(first_toc).addClass('on');
+            }
         })
     </script>

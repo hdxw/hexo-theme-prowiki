@@ -7,19 +7,18 @@
         </div>
     </div>
 </footer>
-<script>
-    $('.article-entry').each(function(i){
-        $(this).find('img').each(function(){
-            if ($(this).parent().hasClass('fancybox')) return;
-            var alt = this.alt;
-            if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-            $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-        });
-        $(this).find('.fancybox').each(function(){
-            $(this).attr('rel', 'article' + i);
-        });
-    });
-    if ($.fancybox){
-        $('.fancybox').fancybox();
-    }
-</script>
+<%- js('js/custom.js') %>
+<% if (page.encrypt) { %>
+    <script>
+        function listen_content(){
+            if($(".hbe-button").length > 0){
+                onload_content();
+            }else{
+                setTimeout(listen_content, 100);
+            }
+        }
+        setTimeout(listen_content, 100);
+    </script>
+<% }else{ %>
+    <script>onload_content();</script>
+<% } %>

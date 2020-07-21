@@ -1,12 +1,11 @@
 header:
-  title: HTW
-  favicon: /img/favicon.ico
-  version: '1.0'
+  favicon: /img/favicon.ico # 支持使用url
+  version: '1.1'
 footer:
   copyright: 河东小伍
   beian: 冀ICP备00000000号
 
-# 文章作者列表
+# 文章作者列表，文章中未设置时默认选择第一项
 authors: 
   anonymous: /img/default.png
   河东小伍: /img/hdxw.png
@@ -19,6 +18,7 @@ menus:
   标签: /tags
   友链: /friends
   关于: /about
+  百度: https://www.baidu.com
 
 # 跳页标签显示个数，建议为奇数（对称）
 page_show: 5
