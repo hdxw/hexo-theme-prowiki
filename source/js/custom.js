@@ -2,6 +2,7 @@ function wait(callback, seconds) {
     var timelag = null;
     timelag = window.setTimeout(callback, seconds);
 }
+// 复制代码按钮
 var initCopyCode = function(){
     var copyHtml = '';
     copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
@@ -47,10 +48,10 @@ var initCopyCode = function(){
     });
 }
 //加载页面后自动调用方法
-function onload_content(){
+var onload_content = function(){
     //查看大图
     $('.article-entry').each(function(i){
-        $(this).find('img').each(function(){
+        $(this).find('>p img,>ol img,>ul img,>dl img,>blockquote img').each(function(){
             if ($(this).parent().hasClass('fancybox')) return;
             var alt = this.alt;
             if (alt) $(this).after('<span class="caption">' + alt + '</span>');
@@ -65,4 +66,11 @@ function onload_content(){
     }
     //创建复制按钮
     initCopyCode();
+    //修改加密文章标题前图标状态
+    if($('.article-entry').length > 0){//index不改变
+        $('.fa-lock').each(function(i){
+            $(this).removeClass('fa-lock');
+            $(this).addClass('fa-unlock-alt');
+        });
+    }
 }

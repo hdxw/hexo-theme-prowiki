@@ -24,13 +24,14 @@
             if($(".toc-link")){
                 $(".toc-link").each(function(i,link){
                     var mdHeight = get_top_by_link(link);
-                    if(mdHeight < scrollH + 50){
+                    if(mdHeight <= scrollH + 40){
                         //高亮导航菜单
                         $('.toc-link').removeClass('on');
                         $(link).addClass('on');
                     }
                 });
             }
+            //返回顶部显隐
             if(scrollH < 200){
                 $("#gohome").css("display","none");
             }else{
