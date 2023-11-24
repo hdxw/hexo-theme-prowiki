@@ -1,5 +1,5 @@
 header:
-  favicon: /img/favicon.ico # 支持使用url
+  favicon: /favicon.ico # 支持使用url
   version: '1.2'
 footer:
   copyright: 阿巴阿巴

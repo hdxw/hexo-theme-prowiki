@@ -6,11 +6,11 @@
             <% if (page.links[j].items){ %>
                 <% for(var k = 0,len2=page.links[j].items.length; k < len2; k++) { %>
                 <div class="link_item">
-                    <a href="<%= page.links[j].items[k].url %>">
+                    <a href="<%= url_for(page.links[j].items[k].url) %>">
                     <% if (page.links[j].items[k].avatar){ %>
-                        <img src="<%= page.links[j].items[k].avatar %>" />
+                        <img src="<%= url_for(page.links[j].items[k].avatar) %>" alt="" />
                     <% }else{ %>
-                        <img src="<%- url_for('img/default.png') %>" />
+                        <img src="<%- url_for('img/default.png') %>" alt=""/>
                     <% } %>
                         <p class="item_name"><%= page.links[j].items[k].name %></p>
                     </a>
