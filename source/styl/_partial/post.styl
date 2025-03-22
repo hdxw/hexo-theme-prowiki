@@ -1,250 +1,254 @@
-// 文章内容样式
-.article-entry
-  margin-top: 20px
-  word-break: auto
-  a[href]
-    color: #ffff00
-    &:hover
-      color: #ffbb33
-  h1,h2,h3,h4,h5,h6
-    // 锚定位固定偏移50px
-    padding-top: 50px
-    margin-bottom: 10px
-    color: #33ffbb
-    // user-select: none
-  h1
-    margin-top: -30px
-    font-size: 34px
-  h2
-    margin-top: -35px
-    font-size: 30px
+// 文章标题
+.article-title
+  padding: 0.625em
+  user-select: none
   h3
-    margin-top: -35px
-    font-size: 24px
-  h4
-    margin-top: -40px
-    font-size: 20px
-  h5
-    margin-top: -40px
-    font-size: 18px
-  h6
-    margin-top: -40px
-    font-size: 16px
-  dl
-    margin: 0 20px
-    line-height: 1.6em
-  dt
-    font-weight: bold
-  p
-    margin-top: 10px
-    margin-bottom: 10px
-    font-size: 16px
-    line-height: 30px
-  >p img,#hexo-blog-encrypt >div >p img
-    max-width: 800px
-    max-height: 500px
-    margin-top: 10px
-    border: 0
-    background-color: #f3f3f3
-  code
-    padding: 0 0.3em
-    display: inline-block
-    line-height: 20px
-    background-color: #606060
-  pre
-    padding: 15px 20px
-    margin: 10px 0
-    background-color: #303030
-    code
-      background-color: transparent
-  figure
-    margin: 15px 0 15px 0
-    line-height: 18px
-    font-size: 16px
-    border: #f3f3f3 solid 1px
-    figcaption
-      background-color: #555555
-      color: #bbbbbb
-      font-size: 14px
-      line-height: 20px
-      text-indent: 1em
-      a
-        float: right
-        margin-right: 10px
-    table
-      table-layout:fixed
-      width: 100%
-      .gutter
-        // 左侧宽度固定，代码不设宽度（配合table 100%）
-        width: 25px
-        text-align: right
-        border-right: #f3f3f3 solid 1px
-        padding-right: 5px
-        color: #aaa
-        pre
-          // 属性覆盖
-          padding: 0
-          margin: 0
-          background-color: transparent
-      .code pre
-        padding: 0
-        margin: 0
-        position: relative
-        code
-          // 向左对齐，上下居中
-          padding: 11px 0.5em 0.5em 0.5em !important
-          overflow-x: scroll
-          background: #303030 !important
-          // 属性覆盖
-          display: block
-          line-height: 18px
-          mark
-            background-color: #606060
-  .hbe-input-container label
-    // 加密插件
-    color: #6f6 !important
-    font-weight: bold
-    text-indent: 1em
-  .video-container
-    // 视频
-    height: 300px
-    text-align: center
-    iframe
-      width: 600px
-      height: 300px
-  .caption
-    // 图片fancybox-alt text
-    color: #999;
-    display: block;
-    font-size: 0.9em;
-    margin-top: 0.5em;
-    position: relative;
-    text-align: center;
-    &[href]:hover
-      text-decoration: underline
-  .fancybox
-    display: block
-    text-align: center
-  .pullquote
-    text-align: left
-    width: 45%
-    &.left
-      margin-left: 0.5em
-      margin-right: 1em
-      float: left
-    &.right
-      margin-right: 0.5em
-      margin-left: 1em
-      float: right
-  >table,#hexo-blog-encrypt >div >table
-    // 表格样式
-    max-width: 80%
-    th,td
-      font-size: 16px
-      line-height: 30px
-      border: 1px solid #ccc
-      padding: 0 1em 0 1em
-      &:hover
-        background-color: rgba(255, 255, 255, 0.3)
-      &[align="center"]
-        text-align: center
-      &[align="left"]
-        text-align: left
-      &[align="right"]
-        text-align: right
-  ul,ol
-    margin: 8px 0 8px 1.5em
-    li
-      line-height: 30px
-      p:first
-        display: inline
-  ul
-    list-style: disc
-  ol
-    list-style: decimal
-  .friends_links .link_items .link_item
-    width: 118px
-    height: 140px
-    display: inline-table
-    border: #ccc solid 1px
-    border-radius: 10px
-    margin: 20px
-    overflow: hidden
-    &:hover
-      box-shadow: 3px 3px 3px rgba(250,250,250,0.2)
-    a
-      display: block
-      width: 100%
-      height: 100%
-      img
-        margin: 18px
-        background-color: #f3f3f3
-        width: 80px
-        height: 80px
-        border-radius: 40px
-        border: #fff solid 1px
-        margin-bottom: 0
-        transition: all 500ms
-        &:hover
-          transform: rotate(360deg)
-      p
-        margin: 0
-        text-align: center
-    .item_name
-      display: block
-      width: 100%
-      line-height: 20px
-      text-align: center
-      margin-top: 5px
-  .gallery_photos
+    display: grid
     width: 100%
-    height: 500px
-    position: relative
-    .show_left,.show_right
-      width: 30px
-      height 100%
-      position: absolute
-      background-color: rgba(0,0,0,0.1)
-      z-index: 2
+  .attr-list
+    width: 100%
+    line-height: 1.875em
+    font-size: 0.875em
+    display: flex
+    flex-wrap: wrap
+    column-gap: 0.625em
+    .attr-item
+      display: flex
+      flex-direction: row
+      align-items:center
+      flex-wrap: wrap
+      span
+        padding: 0 0.25em
+      img
+        height: 1.25em
+        width: 1.25em
+        border-radius: 100%
+  // 友链
+  .friend-group
+    color: var(--title-text-color)
+    margin: 0.5em 0
+  .friend-list
+    display: grid
+    grid-template-columns: repeat(8, 1fr)
+    grid-gap: 0.75em
+    .friend
+      border: 1px solid var(--text-color)
+      border-radius: 0.625em
+      overflow: hidden
       &:hover
-        background-color: rgba(0,0,0,0.2)
+        box-shadow: 3px 3px 3px var(--code-light-color)
       a
+        display: block
         width: 100%
         height: 100%
-        display: block
-        line-height: 500px
-        text-align: center
-        user-select: none
-        color:  rgba(255,255,255,0.4)
-    .show_right
-      margin-left: 950px
-    .photo_item
-      margin: 0 auto
-      position: absolute
-      img
-        width: 980px
-        height: 500px
-    .photo_show
-      z-index: 1
-  .btn-copy
-    user-select: none
-    border: none
-    position: absolute
-    right: 0
-    opacity: 0.5
+        img
+          margin: 10% 10% 0 10%
+          width: 80%
+          border-radius: 50%
+          transition: all 500ms
+          &:hover
+            transform: rotate(360deg)
+        p
+          line-height: 2em
+          text-align: center
+          color: var(--link-text-color)
+          &:hover
+            color: var(--hover-text-color)
+
+// 文章内容
+.article-content
+  padding: 0.625em
+  // 通用样式
+  a[href]
+    color: var(--link-text-color)
     &:hover
-      opacity: 1
+      color: var(--hover-text-color)
+  h1,h2,h3,h4,h5,h6
+    color: var(--title-text-color)
+  p,li,dl
+    line-height: 1.875em
+    margin: 0.625em 0
+  p
+    word-break: break-all
+    display: block
+  ol,ul
+    // list-style-position: inside会导致li p换行，不好处理
+    padding-left: 1em
+  dl
+    dt
+      font-weight: bold
+    dd
+      margin-left: 2em
+  p>code,li>code,kbd
+    display: inline-block
+    line-height: 1.25em
+    padding: 0.25em 0.375em
+    color: var(--text-color)
+    background-color: var(--code-light-color)
+    user-select: all
+  kbd
+    border: 1px solid var(--border-color)
+  table:not(figure table)
+    background-color: var(--code-back-color)
+    th,td
+      border: 1px solid var(--text-color)
+      padding: 0 0.25em
+      &:hover
+        background-color: var(--code-light-color)
+    code
+      color: var(--text-color)
+      background-color: var(--code-light-color)
+  //// 转载声明
+  blockquote
+    margin: 0.625em 0
+    padding: 0.5em 1em
+    border-left: 5px solid var(--border-color)
+    background-color: var(--trans-back-color)
+  // hexo-blog-encrypt样式兼容
+  .hbe-input-label-default::before,.hbe-input-label-up::before,
+  .hbe-input-field-blink,.hbe-input-field-flip
+    background: var(--trans-back-color) !important
+  .hbe-graphic-surge
+    fill: var(--trans-back-color) !important
+  .hbe-input-field-blink
+    border-color: var(--border-color) !important
+  .hbe-input-label-shrink::after
+    background: var(--border-color) !important
+  .hbe-input-label-up::before
+    border-color: var(--border-color) !important
+  .hbe-graphic-wave,.hbe-graphic-xray
+    stroke: var(--border-color) !important
+  .hbe-input-field,.hbe-input-label-content,
+  .hbe-input-label-content-blink::after,
+  .hbe-input-label-content-flip::after,
+  .hbe-input-label-content-surge::after
+    color: var(--text-color) !important
+  .hbe-button
+    white-space: nowrap
+  // 高亮代码样式
+  .highlight
+    font-size: 1rem
+    line-height: 1rem
+    margin: 1em 0
+    border: 1px solid var(--text-color)
+    background-color: var(--code-back-color)
+    //// 有标题代码块
+    figcaption
+      background-color: var(--trans-back-color)
+      border-bottom: 1px solid var(--text-color)
+      span
+        display: block
+        color: var(--header-text-color)
+        font-size: 0.75em
+        line-height: 1.5em
+        text-indent: 1em
+        user-select: none
+    table
+      width: 100%
+      tr
+        display: grid
+        grid-template-columns: 1.625em 1fr
+        .gutter
+          padding: 0.5em 0
+          user-select: none
+          display: grid
+          justify-content: center
+          pre
+            text-align: right
+        .code
+          height: 100%
+          overflow-x: hidden
+          position: relative
+          border-left: 1px solid var(--text-color)
+          .btn-copy
+            user-select: none
+            border: none
+            position: absolute
+            right: 0
+            color: var(--code-back-color)
+            background-color: var(--text-color)
+            opacity: 0.5
+            &:hover
+              opacity: 1
 
-// 底部版权声明
-.article-copyright
-  margin-top: 50px
+// 图片集
+.article-gallery
+  width: 100%
+  height: auto;
+  aspect-ratio: 16/9
+  position: relative
+  .show-left,.show-right
+    width: 1.875em
+    height 100%
+    position: absolute
+    top: 0
+    background-color: var(--trans-back-color)
+    opacity: 0.4
+    display: grid;
+    align-content: center
+    justify-content: center
+    user-select: none
+    z-index: 2
+    &:hover
+      opacity: 0.6
+  .show-left
+    left: 0
+  .show-right
+    right: 0
+  .photo-list,.photo-list .photo-item,.photo-list .photo-item img
+    width: 100%
+    height: 100%
+  .photo-list
+    .photo-item
+      z-index: 1
+      display: none
+      img
+        object-fit: fill
+    .photo-show
+      display: block
 
-#gitalk-container
-  .gt-copyright
-    display: none
-  .gt-avatar
-    background-color: #d3d3d3
-  .gt-comment-content
-    background-color: #333
-  .gt-comment-body
-    color: #ccc !important
+// 锚点导航
+.article-toc
+  position: fixed
+  top: 5em
+  bottom: 3em
+  overflow-y: scroll
+  margin-left: calc(60% - 0.625em)
+  z-index: 6
+  .toc, >.toc-item
+    list-style-type: none
+    background-color: var(--trans-back-color)
+    .on
+      color: var(--toc-text-color)
+  li
+    list-style: none
+  ol a
+    text-indent: 1em
+  ol ol a
+    text-indent: 2em
+  ol ol ol a
+    text-indent: 3em
+  ol ol ol ol a
+    text-indent: 4em
+  ol ol ol ol ol a
+    text-indent: 5em
+  ol ol ol ol ol ol a
+    text-indent: 6em
+  a
+    display: block
+    width: 100%
+    line-height: 1.5em
+    padding: 0 0.5em
+    border-left: 0.25em solid transparent
+    &:hover
+      border-color: var(--border-color)
+      background-color: var(--code-light-color)
+
+// 呼吸灯边框
+.breath-border
+  box-shadow: 0 0 3px var(--text-color)
+  -webkit-animation-timing-function: ease-in-out
+  -webkit-animation-name: breathe
+  -webkit-animation-duration: 1500ms
+  -webkit-animation-iteration-count: infinite
+  -webkit-animation-direction: alternate

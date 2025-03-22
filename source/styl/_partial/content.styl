@@ -1,41 +1,43 @@
-@import "_widget/turn_page"
-
-// header和footer中间部分
+// 页面通用
 .content
-  width: 100%
-  min-height: 700px
-  float: left
-  padding-top: 60px
+  margin-top: var(--header-height)
   a
-    color: #f3f3f3
-  a:hover
-    color: #ffbb33
-  .outer
-    width: 1000px
-    margin: 0 auto
-  article
-    padding: 10px
-    blockquote
-      margin-top: 10px
-      margin-bottom: 10px
-      border-left: solid 5px #33bbff
-      background-color: rgba(22, 22, 22, 0.4)
-      padding: 0.5em 1em 0.5em 1em
-      overflow: auto
-      footer cite::before
-        content: "—"
-        padding: 0px 0.5em
+    color: var(--text-color)
+    &:hover
+      color: var(--hover-text-color)
+  i
+    font-size: 0.875em
 
-// 首页中的边框
-.post-wrapper
-  width: 100%
-  color: #f3f3f3
-  border: #33ffbb 1px solid
-  border-radius:5px
-  margin-top: 10px
-  margin-bottom: 10px
-  float: left
+// 不换行、超出使用省略号
+.nowrap
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
 
-@import "_widget/title"
-@import "_widget/toc"
+// 返回顶部
+#gotop
+  display: none
+  z-index: 8
+  width: 2.5em
+  height: 2.5em
+  line-height: calc(2.5em - 2px)
+  text-align: center
+  border: 1px var(--text-color) solid
+  border-radius: 0.25em
+  background-color: var(--trans-back-color)
+  position: fixed
+  bottom: 3.75em
+  margin-left: 60%
+
+// index.ejs
+.post-list
+  display: grid
+  grid-gap: 0.75em
+  .post-digest
+    width: 100%
+    border: var(--title-text-color) 1px solid
+    border-radius: 5px
+    background: var(--trans-back-color)
+
+// 通用页面组件
 @import "_partial/post"

@@ -1,29 +1,38 @@
+version: '2.0'
 header:
-  favicon: /favicon.ico # 支持使用url
-  version: '1.2'
+  favicon: /img/favicon.ico # 默认图标/img/favicon.ico，支持使用url
 footer:
-  copyright: 阿巴阿巴
   beian: 冀ICP备00000000号
-
-# 文章作者列表，文章中未设置时默认选择第一项
-authors: 
-  anonymous: /img/default.png
-  阿巴阿巴: /img/abaaba.png
 
 # 顶部菜单
 menus: 
   首页: /
-  归档: /archives
-  分类: /categories
-  标签: /tags
-  友链: /friends
-  相关链接:
-    文章: /2020/07/16/3a6087ce/
-    百度一下你就知道: https://www.baidu.com
-  关于: /about
+  # 归档: archives
+  # 分类: categories
+  # 标签: tags
+  # 友链: friends
+  # 相关链接:
+  #   文章: /2020/07/16/3a6087ce/
+  #   百度一下: https://www.baidu.com
+  # 关于: about
 
-# 跳页标签显示个数，建议为奇数（对称）
-page_show: 5
+actions:
+  search_enable: false
+
+# 全局搜索配置
+localsearch:
+  unescape: true # 字符串是否转义（解码）
+  top_n_per_article: 1 # 每篇文章匹配几次
+  auto_trigger: true # 输入内容改变时，是否自动显示搜索结果。false时需要按回车或者放大镜图标进行搜索
+
+# 文章作者列表，文章中未设置时默认选择第一项
+authors: 
+  匿名用户: /img/default.png
+  阿巴阿巴: /img/abaaba.png
+
+# 跳页标签左右显示个数，例如：page_delta=3，当前页数=13时，左右分别显示[10,11,12]和[14,15,16]
+# 1,...,10,11,12,[13],14,15,16,...,20
+page_delta: 5
 
 # 代码高亮样式
 # a11y-dark, a11y-light, agate, androidstudio, an-old-hope, arduino-light, arta, ascetic,
@@ -39,11 +48,27 @@ page_show: 5
 hlcss: lioshi
 
 toc:
-  list_number: false # 文章目录是否显示编号
+  list_number: true # 文章目录是否显示编号
+
+tag:
+  bubble_same_color: false # 标签首页气泡图，气泡背景色是否相同
 
 # 文章底部版权声明信息
 copyright:
   enable: true
-  content: # permalink会被替换为root/_config.yml中配置的url域名的当前页面连接
-    - '版权声明：本文为「阿巴阿巴」的原创文章，博客内容遵循 署名-非商业性使用-相同方式共享 协议。'
-    - '本文永久链接是：permalink'
+  content: # :permalink会被替换为root/_config.yml中配置的url域名的当前页面连接；:author会被替换为文章作者
+    - '版权声明：本文为「:author」的原创文章，博客内容遵循 署名-非商业性使用-相同方式共享 协议。'
+    - '本文永久链接是：:permalink'
+
+friends:
+  enable: false
+  path: friends
+  groups:
+    - group: 搜索引擎
+      items:
+        - name: 百度
+          url: https://www.baidu.com
+    - group: hexo主题
+      items:
+        - name: ProWiki
+          url: https://github.com/hdxw/hexo-theme-prowiki

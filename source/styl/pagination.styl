@@ -1,0 +1,26 @@
+.pagination
+  margin: 0.625em 0
+  height: 3em
+  ul
+    height: 100%
+    float: right
+  li
+    height: 100%
+    display: flex
+    align-items: center
+    float: left
+    a
+      display: block
+      width: 2.25em
+      height: 2.25em
+      line-height: 2.25em
+      color: var(--text-color)
+      background-color: var(--code-light-color)
+      text-align: center
+      border-radius: 3px
+      margin: 0 0.25em
+      user-select: none
+      &.current
+        color: var(--title-text-color)
+      &[href]:hover
+        color: var(--hover-text-color)

@@ -1,1 +1,22 @@
-/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}html{box-sizing:border-box}*{box-sizing:inherit}*:before,*:after{box-sizing:inherit}img,embed,object,audio,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0;text-align:left}
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+button,input,select{margin:0}
+html{box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+img,video{height:auto;max-width:100%}
+iframe{border:0}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0}
+/*自定义全局*/
+h1{font-size:2.125em !important}
+h2{font-size:1.875em !important}
+h3{font-size:1.5em !important}
+h4{font-size:1.25em !important}
+h5{font-size:1.125em !important}
+h6{font-size:1em !important}
+a{text-decoration: none}
+button{background: none;border: none;font: inherit;cursor: pointer}
+pre,code{height: 100%;}
+ul{list-style-type:disc}
+ol{list-style-type:decimal}

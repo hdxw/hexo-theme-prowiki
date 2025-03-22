@@ -1,0 +1,17 @@
+<% if (page.photos && page.photos.length>0){ %>
+<div class="article-gallery">
+    <div class="show-left" onclick="show_left()">
+        <i class="fas fa-angle-left"></i>
+    </div>
+    <div class="photo-list">
+        <% for(var i = 0,len=page.photos.length; i < len; i++) { %>
+        <div class="photo-item<%= i==0?' photo-show':'' %>">
+            <img src="<%- url_for(page.photos[i]) %>" />
+        </div>
+        <% } %>
+    </div>
+    <div class="show-right" onclick="show_right()">
+        <i class="fas fa-angle-right"></i>
+    </div>
+</div>
+<% } %>

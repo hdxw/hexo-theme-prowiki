@@ -1,0 +1,29 @@
+// 分类页样式：分类、标签
+
+.sort-head
+  width: 100%
+  margin: 1.125em 0
+  h2
+    display: block
+    color: var(--title-text-color)
+    user-select: none
+
+.sort-post
+  width: 100%
+  display: grid
+  grid-template-columns: auto 1fr 10em
+  margin: 0.5em 0
+  a
+    display: block
+    font-size: 1.25em
+    padding: 0 0.25em
+    user-select: none
+    &:not([href])
+      pointer-events: none
+  .sort-list
+    display: flex
+    flex-wrap: wrap
+    align-content: center
+    justify-content: flex-end
+    .sort-item
+      font-size: 0.875em

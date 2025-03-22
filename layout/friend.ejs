@@ -1,0 +1,29 @@
+<% if (theme.friends.enable){ %>
+<article class="post-entity">
+    <article class="article-title">
+        <% page.friends.forEach(function(items, group){ %>
+        <h3 class="friend-group"><%= group %></h3>
+        <div class="friend-list">
+        <% items.forEach(function(item){ %>
+            <div class="friend">
+                <a href="<%= item.url %>" title="<%= item.name %>">
+                    <img class="breath-border" src="<%= url_for(item.avatar?item.avatar:'img/default.png') %>" alt="<%= item.name %>">
+                    <p class="nowrap"><%= item.name %></p>
+                </a>
+            </div>
+        <% }) %>
+        </div>
+        <% }) %>
+    </article>
+    <% site.pages.each(function(gen_page, i){ %>
+        <% if(gen_page.path==page.path){ %>
+            <hr>
+            <article class="article-content">
+                <%- gen_page.content %>
+            </article>
+        <% } %>
+    <% }) %>
+</article>
+<% }else{ %>
+    <%- partial('post') %>
+<% } %>

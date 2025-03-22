@@ -1,7 +1,56 @@
+:root
+  // 预设颜色
+  --main-color: #3f3b3a
+  --trans-back-color: rgba(22,22,22,.4)
+  --code-back-color: #303030
+  --code-light-color: #666
+  --text-color: #f3f3f3
+  --title-text-color: #3fb
+  --header-text-color: #bf3
+  --link-text-color: #ff0
+  --hover-text-color: #fb3
+  --toc-text-color: #3ff
+  --border-color: #3bf
+  // 预设数值
+  --header-height: 50px
+  // 预设背景
+  --background-image: none
+  --background-size: none
+
+// 自定义字体
 @font-face
-  font-family: pht
-  src: url(https://cdn.jsdelivr.net/gh/hdxw/hexo-theme-prowiki@master/source/webfonts/puhuiti3.woff2)
-// 滚动条
+  font-family: 'puhuiti'
+  src: url('../font/puhuiti.ttf')
+  font-display: block
+
+// Logo文字背景色动画
+@keyframes masked-animation
+  0%
+    background-position: 0 0
+  100%
+    background-position: -200% 0
+// 搜索框加载动画
+@keyframes search-fadein
+  from
+    opacity: 0
+    transform: scale(0.5)
+  to
+    opacity: 1
+    transform: scale(1)
+// 右侧菜单滑动进入
+@keyframes nav-slidein
+  from
+    transform: translateX(100%)
+  to
+    right: 0
+// 呼吸灯边框
+@-webkit-keyframes breathe
+  0%
+    box-shadow: 0 1px 2px var(--text-color), 0 1px 1px var(--text-color) inset
+  100%
+    box-shadow: 0 1px 15px var(--text-color), 0 1px 15px var(--text-color) inset
+
+// 网页滚动条
 html ::-webkit-scrollbar
   height: 4px
   width: 4px
@@ -10,30 +59,40 @@ html ::-webkit-scrollbar-track-piece
   background: transparent
 
 html ::-webkit-scrollbar-thumb
-  background: #33bbff
+  background: var(--border-color)
   cursor: pointer
   border-radius: 2px
 
 html ::-webkit-scrollbar-thumb:hover
-  background: #33ffbb
+  background: var(--border-color)
+
+.theme-grid {
+  --background-image: linear-gradient(black 2px, transparent 0),
+                 linear-gradient(90deg, black 2px, transparent 0),
+                 linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 0),
+                 linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 0)
+  --background-size: 50px 50px, 50px 50px,
+                 10px 10px, 10px 10px
+}
+
+body,html
+  height: 100%
+  scroll-padding-top: var(--header-height)
+  display: grid;
+  grid-template-rows: 1fr auto
 
 body
-  background: #3F3B3A
-  color: #f3f3f3
-  font-family: pht
-//   background-image: linear-gradient(black 2px, transparent 0),
-//                 linear-gradient(90deg, black 2px, transparent 0),
-//                 linear-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 0),
-//                 linear-gradient(90deg, rgba(0, 0, 0, 0.3) 1px, transparent 0)
-//   background-size: 50px 50px, 50px 50px,
-//                 10px 10px, 10px 10px
-
-a
-  text-decoration: none
-  color: #f3f3f3
+  background: var(--main-color)
+  color: var(--text-color)
+  font-family: 'puhuiti'
+  background-image: var(--background-image)
+  background-size: var(--background-size)
 
 @import "_partial/header"
 @import "_partial/content"
-
 @import "_partial/footer"
 
+@media screen and (min-width: 720px) and (max-width: 1300px)
+  @import "_adaptive/tablet"
+@media screen and (max-width: 720px)
+  @import "_adaptive/mobile"

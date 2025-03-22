@@ -1,19 +1,22 @@
-// archive样式
-.archive-wrapper
-  .archive_year
-    margin: 20px
-    h2
-      font-size: 24px
-  .archive_post
-    margin: 0 20px 0 50px
-    height: 35px
-    line-height: 35px
-    a
-      float: left
-      margin-left: 5px
-      max-width: 860px
-      white-space: nowrap
-      text-overflow: ellipsis
-      overflow: hidden
-    time
-      color: #bbbbbb
+.archive-head
+  width: 100%
+  margin: 1.125em 0
+  a
+    display: block
+    color: var(--title-text-color)
+    user-select: none
+    &:not([href])
+      pointer-events: none
+
+.archive-post
+  width: 100%
+  display: grid
+  grid-template-columns: auto 1fr
+  margin: 0.5em 0
+  a
+    display: block
+    font-size: 1.25em
+    padding: 0 0.25em
+    user-select: none
+    &:not([href])
+      pointer-events: none

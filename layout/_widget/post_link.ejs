@@ -1,0 +1,9 @@
+<a href="<%= url_for(post.link?post.link:post.path) %>" class="shake shake-little nowrap" title="<%= post.link?post.link:post.title %>">
+    <% if (post.encrypt){ %>
+    <i class="fas fa-lock" aria-hidden="true"></i>
+    <% } %>
+    <% if (post.link){ %>
+    <i class="fas fa-link" aria-hidden="true"></i>
+    <% } %>
+    <%= post.title?post.title:'<无标题>' %>
+</a>

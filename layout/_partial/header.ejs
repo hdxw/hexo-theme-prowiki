@@ -1,27 +1,57 @@
 <header>
-  <div class="outer">
-    <div class="inner">
-      <h1 class="logo-wrap">
-        <a><%= config.title %><b><sup><%- theme.header.version %></sup></b></a>
-      </h1>
-    </div>
-    <div class="inner">
-      <nav class="main-nav">
-        <% for (var key in theme.menus){ %>
-          <% if (typeof(theme.menus[key]) == "object") { %>
+    <div class="main">
+        <div class="logo"><%= config.title %></div>
+        <nav>
+        <% for (let key in theme.menus){ %>
+        <% if (typeof(theme.menus[key]) == "object") { %>
             <div class="dropdown">
-              <a class="dropbtn"><%= key %></a>
-              <div class="dropdown-content">
-                <% for (var val in theme.menus[key]){ %>
-                  <a href="<%- url_for(theme.menus[key][val]) %>"><%= val %></a>
-                <% } %>
-              </div>
+                <a><%= key %></a>
+                <div class="dropdown-list">
+                    <% for (var val in theme.menus[key]){ %>
+                    <a href="<%- url_for(theme.menus[key][val]) %>"><%= val %></a>
+                    <% } %>
+                </div>
             </div>
-          <% }else{ %>
+        <% }else{ %>
             <a href="<%- url_for(theme.menus[key]) %>"><%= key %></a>
-          <% } %>
         <% } %>
-      </nav>
+        <% } %>
+        </nav>
+        <div class="actions">
+            <% if(theme.actions.search_enable){ %>
+            <button class="btn-search"><i class="fas fa-magnifying-glass fa-fw"></i></button>
+            <% } %>
+            <button class="btn-showmenu"><i class="fas fa-bars fa-fw"></i></button>
+        </div>
     </div>
-  </div>
 </header>
+<div class="right-navs">
+    <nav>
+    <% for (let key in theme.menus){ %>
+    <% if (typeof(theme.menus[key]) == "object") { %>
+        <div class="dropdown">
+            <a><%= key %></a>
+            <div class="dropdown-list">
+                <% for (var val in theme.menus[key]){ %>
+                <a href="<%- url_for(theme.menus[key][val]) %>"><%= val %></a>
+                <% } %>
+            </div>
+        </div>
+    <% }else{ %>
+        <a href="<%- url_for(theme.menus[key]) %>"><%= key %></a>
+    <% } %>
+    <% } %>
+    </nav>
+</div>
+<% if(theme.actions.search_enable){ %>
+<div class="search-overlay">
+    <div class="search-box">
+        <div class="search-head">
+            <input type="text" class="search-input" placeholder="全站内容搜索~">
+            <button class="search-button"><i class="fas fa-magnifying-glass fa-fw"></i></button>
+        </div>
+        <div class="search-body">
+        </div>
+    </div>
+</div>
+<% } %>

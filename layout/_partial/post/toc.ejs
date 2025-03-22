@@ -1,7 +1,0 @@
-<% var plain_content = page.origin ? page.origin : page.content; %>
-<% if(plain_content && toc(plain_content).length > 0){ %>
-    <section id="toc-div" <% if (page.encrypt) { %>style="display: none;" <% } %>>
-        <%- toc(plain_content, {list_number: theme.toc.list_number}) %>
-    </section>
-    <section id="gohome" style="display: none;"><a><i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i></a></section>
-<% } %>

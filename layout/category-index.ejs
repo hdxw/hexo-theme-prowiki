@@ -1,0 +1,6 @@
+<%- css('styl/category') %>
+<div class="cate-folder">当前目录：<a onclick="loadCategoryId(0)">根目录</a>/<div id="child-folder"></div></div>
+<div id="cate-list"></div>
+<script>
+    let CATEGORY_DATA = <%- page.categoryStr %>;
+</script>

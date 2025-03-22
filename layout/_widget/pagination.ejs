@@ -1,0 +1,55 @@
+<%
+//page.current=6;page.total=13;
+var page_left=[],page_right=[];
+for(var i = theme.page_delta; i > 0; i--) {
+    page_left.push(page.current-i);
+    page_right.push(page.current+theme.page_delta-i+1);
+}
+var page_path = '';
+if (is_archive()){
+    page_path = config.archive_dir;
+    if (page.year){
+        page_path += '/' + page.year;
+        if (page.month){
+            page_path += '/' + (page.month < 10?'0'+page.month:page.month);
+        }
+    }
+}else if(is_category()){
+    page_path = config.category_dir+'/'+page.category;
+}else if(is_tag()){
+    page_path = config.tag_dir+'/'+page.tag;
+}
+%>
+<div class="pagination">
+    <ul>
+    <% if(page.current > theme.page_delta+1){ %>
+        <li><a href="<%= url_for(page_path) %>">1</a></li>
+        <% if(page_left[0] !== 2){ %>
+        <li><a>...</a></li>
+        <% } %>
+    <% } %>
+
+    <% for(let p of page_left){ %>
+        <% if(p == 1){ %>
+        <li><a href="<%= url_for(page_path) %>">1</a></li>
+        <% }else if(p > 1){ %>
+        <li><a href="<%= url_for(page_path+'/'+config.pagination_dir+'/'+p) %>"><%= p %></a></li>
+        <% } %>
+    <% } %>
+
+        <li><a class="current"><%= page.current %></a></li>
+
+    <% for(let p of page_right){ %>
+        <% if(p <= page.total){ %>
+        <li><a href="<%= url_for(page_path+'/'+config.pagination_dir+'/'+p) %>"><%= p %></a></li>
+        <% } %>
+    <% } %>
+
+    <% if(page.current < page.total - theme.page_delta){ %>
+        <% if(page_right[page_right.length-1]+1 !== page.total){ %>
+        <li><a>...</a></li>
+        <% } %>
+        <li><a href="<%= url_for(page_path+'/'+config.pagination_dir+'/'+page.total) %>"><%= page.total %></a></li>
+    <% } %>
+    </ul>
+</div>

@@ -1,20 +1,15 @@
-<% if (page.path===config.category_dir+'/index.html'){ %>
-    <%- include('category') %>
-<% }else if (page.path===config.tag_dir+'/index.html'){ %>
-    <%- include('tag') %>
-<% }else{ %>
-    <article>
-        <%- partial('_partial/post/title', {post:page}) %>
-        <hr>
-        <div class="article-entry">
-            <%- partial('_partial/post/gallery') %>
-            <%- partial('_partial/post/links') %>
-            
-            <%- page.content %>
-            <div class="article-copyright">
-                <%- partial('_partial/post/copyright') %>
-            </div>
-        </div>
-    </article>
-    <%- partial('_partial/post/toc') %>
+<%- partial('_widget/post_head', {post:page}) %>
+<hr>
+<article class="article-content">
+    <%- partial('_widget/gallery') %>
+    <%- page.content %>
+</article>
+<% if(page.content && page.content.length > 0){ %>
+<aside class="article-toc" <% if (page.encrypt == true) { %>style="display:none" <% } %>>
+<% if (page.encrypt == true) { %>
+    <%- toc(page.origin, {list_number: theme.toc.list_number}) %>
+<% } else { %>
+    <%- toc(page.content, {list_number: theme.toc.list_number}) %>
+<% } %>
+</aside>
 <% } %>

@@ -1,25 +1,19 @@
 <footer>
-    <div class="outer">
-        <div class="inner">
-            Powered by <a href="https://github.com/hdxw/hexo-theme-prowiki" target="_blank">ProWiki</a>
-            &copy;<%- date(new Date(), 'YYYY') %> <%= theme.footer.copyright %><br>
-            <a href="http://beian.miit.gov.cn/"><%= theme.footer.beian %></a>
-            <div style="height: 50px;"></div>
-        </div>
+    <div class="main">
+        Powered by <a href="https://github.com/hdxw/hexo-theme-prowiki" target="_blank">ProWiki<b><sup><%= theme.version %></sup></b></a>
+        &copy;2020-<%= date(new Date(), 'YYYY') %> <%= config.title %><br>
+        <a href="http://beian.miit.gov.cn/"><%= theme.footer.beian %></a>
     </div>
 </footer>
-<%- js('js/custom.js') %>
-<% if (page.encrypt) { %>
-    <script>
-        function listen_content(){
-            if($(".hbe-button").length > 0){
-                onload_content();
-            }else{
-                setTimeout(listen_content, 100);
-            }
+<script>
+    const CONFIG = Object.freeze({
+        localsearch: {
+            path: "<%= url_for(config.search.path) %>",
+            unescape: <%= theme.localsearch.unescape %>,
+            top_n: <%= theme.localsearch.top_n_per_article %>,
+            auto_trigger: <%= theme.localsearch.auto_trigger %>,
         }
-        setTimeout(listen_content, 100);
-    </script>
-<% }else{ %>
-    <script>onload_content();</script>
-<% } %>
+    });
+</script>
+<%- js('js/prowiki.js') %>
+<script>if(typeof(CATEGORY_DATA)!=='undefined'){loadCategoryId(0);}</script>

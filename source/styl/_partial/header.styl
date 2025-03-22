@@ -1,62 +1,185 @@
-// 导航栏
+.main
+  width: 60%
+  height: 100%
+  margin: 0 auto
+
 header
   width: 100%
-  height: 48px
-  background-color: #3F3B3A
-  box-shadow: 0 2px 2px rgba(255, 255, 255, 0.5)
-  float: left
+  height: calc(var(--header-height) - 2px)
+  line-height: calc(var(--header-height) - 2px)
+  background-color: var(--main-color)
+  box-shadow: 0 2px 2px var(--trans-back-color)
   position: fixed
-  z-index: 9999
-  .outer
-    width: 1000px
-    height: 100%
-    margin: 0 auto
-  .inner
-    line-height: 48px
-    float: left
-    padding-left: 10px
-    padding-right: 10px
+  z-index: 9
+  user-select: none
+  .main
+    display: grid
+    grid-template-columns: auto 1fr auto
+  .logo
+    font-size:1.25em
+    margin: 0 0.5em
+    background-image: -webkit-linear-gradient(left, 
+        var(--hover-text-color), var(--link-text-color) 10%, 
+        var(--header-text-color) 20%,var(--title-text-color) 30%, 
+        var(--toc-text-color) 40%,var(--border-color) 50%, 
+        var(--toc-text-color) 60%,var(--title-text-color) 70%, 
+        var(--header-text-color) 80%, var(--link-text-color) 90%, 
+        var(--hover-text-color) 100%)
+    background-size: 200% 100%
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    animation: masked-animation 3s linear infinite
+  nav
+    text-align: center
+    user-select: none
     a
-      color: #bbff33
-    .logo-wrap
-      margin-top: -0.3em
-    .main-nav
-      .dropdown
-        display: inline-block
-        float: left
-        &:hover
-          background-color: #2E2B2B
-          color: #0ff
-          .dropdown-content
-            display: block
-            -webkit-text-stroke-width: thin
-        .dropbtn
-          display: inline-block
-          min-width: 60px
-          padding: 0 10px
-          text-align: center
-          user-select: none
-          cursor: pointer
-          float: left
-        .dropdown-content
-          display: none
-          background-color: rgba(0, 0, 0, 0.3)
-          box-shadow: 0px 8px 16px 0px rgba(12, 12, 12, 0.25)
-          margin-top: 48px
-          position: absolute
-          a
-            display: block
-            min-width: 60px
-            padding: 0 10px
-            float: none
-            border-top: 1px rgba(170, 170, 170, 0.4) solid
-            &:hover
-              background-color: rgba(0, 0, 0, 0.3)
-      a
-        display: block
-        min-width: 60px
-        padding: 0 10px
-        text-align: center
-        float: left
-        &:hover
-          background-color: rgba(22, 22, 22, 0.4)
+      color: var(--header-text-color)
+      display: block
+      min-width: 4em
+      padding: 0 0.5em
+      float: left
+      &:hover
+        background-color: var(--trans-back-color)
+    .dropdown
+      float: left
+      cursor: pointer
+      &:hover
+        background-color: var(--trans-back-color)
+        .dropdown-list
+          display: block
+      .dropdown-list
+        display: none
+        background-color: var(--main-color)
+        box-shadow: 0px 8px 16px 0px var(--trans-back-color)
+        margin-top: calc(var(--header-height) - 1px)
+        position: absolute
+        a
+          float: none
+          border-top: 1px solid var(--trans-back-color)
+  .actions
+    .btn-showmenu
+      display: none
+    button
+      width: calc(var(--header-height) - 2px)
+      height: calc(var(--header-height) - 2px)
+      color: var(--header-text-color)
+      &:hover
+        background-color: var(--trans-back-color)
+
+// 右侧菜单层
+.right-navs
+  display: none
+  position: fixed
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+  z-index: 10
+  background-color: var(--trans-back-color)
+  user-select: none
+  nav
+    position: fixed
+    right: 0
+    width: 30vw
+    height: 100vh
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: var(--code-light-color)
+    padding-top: var(--header-height)
+    z-index: 11
+    animation: nav-slidein 0.5s ease;
+    a
+      display: block
+      min-width: 4em
+      padding: 0 0.5em
+      height: calc(var(--header-height) - 2px)
+      line-height: calc(var(--header-height) - 2px)
+      color: var(--header-text-color)
+      text-align: center
+      &:hover
+        background-color: var(--trans-back-color)
+    .dropdown
+      cursor: pointer
+      .dropdown-list
+        display: none
+        font-size: 0.75em
+        position: relative
+        a
+          border-top: 1px solid var(--trans-back-color)
+
+// 搜索层
+.search-overlay
+  position: fixed
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+  z-index: 10
+  background-color: var(--trans-back-color)
+  user-select: none
+  display: none
+  .search-box
+    width: 50%
+    max-height: 90vh
+    margin: var(--header-height) auto
+    z-index: 11
+    background-color: var(--code-light-color)
+    border-radius: 6px
+    user-select: none
+    opacity: 0
+    transform: scale(0.5)
+    animation: search-fadein 0.5s forwards
+    .search-head
+      .search-input
+        width: 100%
+        height: var(--header-height)
+        border: 3px solid var(--border-color)
+        border-radius: 6px
+        outline: none
+        text-indent: 1em
+        color: var(--text-color)
+        background-color: var(--code-light-color)
+        &::placeholder
+          color: var(--text-color)
+      .search-button
+        position: fixed
+        right: 0
+        width: var(--header-height)
+        line-height: var(--header-height)
+        color: var(--border-color)
+    .search-body
+      .search-result-icon
+        height: 6.25em
+        display: grid
+        justify-content: center
+        align-content: center
+      .search-stats
+        text-indent: 1rem
+        line-height: 2rem
+        margin-top: calc(var(--header-height) / 2)
+      .search-result-list
+        list-style: none
+        padding: 0.625em
+        display: grid
+        grid-gap: 0.75em
+        max-height: calc(90vh - var(--header-height) * 2.5 - 2rem)
+        overflow-y: scroll
+        li
+          width: 100%
+          max-height: 100%
+          border: 1px solid var(--title-text-color)
+          border-radius: 5px
+          padding: 0.625em
+          overflow: hidden
+          background: var(--trans-back-color)
+          .search-result-title
+            font-size: 1.25rem
+            line-height: 1.5rem
+            color: var(--text-color)
+          .search-result
+            font-size: 0.875em
+            color: var(--text-color)
+          .search-keyword
+            color: var(--code-light-color)
+            background-color: var(--hover-text-color)

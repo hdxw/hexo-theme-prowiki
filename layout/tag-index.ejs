@@ -1,0 +1,44 @@
+<div id="container"></div>
+<%- js('js/highcharts.js') %>
+<%- js('js/highcharts-more.js') %>
+<script type="text/javascript">
+Highcharts.chart('container', {
+    chart: {
+        type: 'packedbubble',
+        height: document.body.clientHeight - 150, //'60%', // 'calc(100% - var(--header-height) - 5em)',
+        backgroundColor: 'var(--trans-back-color)',
+        style: {fontFamily: 'puhuiti'}
+    },
+    // colors: [], // 自定义气泡颜色
+    accessibility: {enabled: false},
+    title: {text: ''},
+    tooltip: {enabled: false},
+    legend: {enabled: false},
+    credits: {enabled: false},
+    plotOptions: {
+        packedbubble: {
+            minSize: '60%',
+            maxSize: '200%',
+            layoutAlgorithm: {
+                splitSeries: false,
+                gravitationalConstant: 0.02
+            },
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}<br>{point.value}',
+                style: {
+                    color: 'var(--text-color)',
+                    textOutline: 'none',
+                    fontWeight: 'normal',
+                    fontSize: '0.875em'
+                }
+            },
+            events: {
+                click: (event) => window.location.assign(event.point.path) // window.open(event.point.path, '_blank')
+            }
+        },
+        series: {states: {inactive: {enabled: false}}} // 其他气泡不变暗
+    },
+    series: <%- tag_series(theme.tag.bubble_same_color) %>
+});
+</script>

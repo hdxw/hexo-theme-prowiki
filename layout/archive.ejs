@@ -1,23 +1,66 @@
-<% if (page.current != page.total || page.posts.length > 30){ %>
-    <%- partial('_partial/turn_page') %>
-<% } %>
-
-<%- css('styl/archive') %>
-<div class="archive-wrapper">
-    <% var year = 0; %>
-    <% page.posts.each(function(post, i){ %>
-        <% if (year != date(post.date,'YYYY')){ %>
-            <div class="archive_year">
-                <% year = date(post.date,'YYYY'); %>
-                <h2><a href="<%- url_for('archives/'+year) %>"><%= year %></a></h2>
-                <hr>
-            </div>
-        <% } %>
-        <div class="archive_post">
-            <a href="<%- url_for('archives/'+date(post.date,'YYYY/MM')) %>"><%- date(post.date,'MM-DD') %></a>
-            <a href="<%- url_for(post.link?post.link:post.path) %>" class="shake shake-little"><%= post.title %></a>
+<% if(page.posts.length > 10) { %>
+    <%- partial('_widget/pagination') %>
+<% }
+let this_year = date(new Date(), 'YYYY');//今年
+if(is_year()) { // 非首页,只有一个archive-head
+    let title = '';
+    if(is_day()){
+        title = page.year+"-"+zfill(page.month,2)+"-"+zfill(page.day,2);
+    }else if(is_month()){
+        title = page.year+"-"+zfill(page.month,2)
+    }else if(is_year()){
+        title = page.year==this_year?"今年的文章":page.year
+    } %>
+    <div class="archive-head">
+        <h2><a><%= title %></a></h2>
+        <hr>
+    </div>
+    <% let offset = config.archive_generator.per_page*(page.current-1);
+    page.posts.each(function(post, i){ %>
+    <div class="archive-post">
+        <% let href = '',text = '';
+        if(is_day()){
+            text = offset+i+1+'.';
+        }else if(is_month()){
+            if(config.archive_generator.daily){
+                href = ` href="${url_for('archives/'+date(post.date,'YYYY/MM/DD'))}"`;
+            }
+            text = date(post.date,'DD')+'日';
+        }else if(is_year()){
+            if(config.archive_generator.monthly){
+                href = ` href="${url_for('archives/'+date(post.date,'YYYY/MM'))}"`;
+            }
+            text = date(post.date,'MM-DD');
+        } %>
+        <a<%- href %>><%= text %></a>
+        <%- partial('_widget/post_link', {post:post}) %>
+    </div>
+    <% })
+} else { // 归档根目录
+let curr_year = 0;
+page.posts.each(function(post, i){
+    let post_year = date(post.date,'YYYY'),href = '',text = '';
+    if(post_year!==curr_year){ // 默认按时间降序,切换年份则添加archive-head
+        curr_year = post_year;
+        if(config.archive_generator.yearly){
+            href = ` href="${url_for('archives/'+post_year)}"`;
+        }
+        text = post_year===this_year?"今年的文章":post_year; %>
+        <div class="archive-head">
+            <h2><a<%- href %>><%= text %></a></h2>
+            <hr>
         </div>
-    <% }) %>
-</div>
-
-<%- partial('_partial/turn_page') %>
+    <% }
+    href = '',text = '';
+    if(config.archive_generator.monthly){
+        href = ` href="${url_for('archives/'+date(post.date,'YYYY/MM'))}"`;
+    }
+    text = date(post.date,'MM-DD'); %>
+    <div class="archive-post">
+        <a<%- href %>><%= text %></a>
+        <%- partial('_widget/post_link', {post:post}) %>
+    </div>
+<% })
+}
+%>
+<%- partial('_widget/pagination') %>

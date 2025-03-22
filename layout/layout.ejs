@@ -1,8 +1,52 @@
-<%- partial('_partial/head') %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= concat_title() %></title>
+    <% if (config.description){ %>
+        <meta name="description" content="<%= config.description %>">
+        <meta property="og:description" content="<%= config.description %>">
+    <% } %>
+    <% if (config.title){ %>
+        <meta property="og:site_name" content="<%= config.title %>">
+    <% } %>
+    <% if (config.author){ %>
+        <meta property="article:author" content="<%= config.author %>">
+    <% } %>
+    <% if (theme.header.favicon){ %>
+        <%- favicon_tag(theme.header.favicon) %>
+    <% } %>
+    <%- css('css/minireset.min.css') %>
+    <%- css('css/all.min.css') %>
+    <%- css('css/csshake.min.css') %>
+    <%- css('css/hljs/'+theme.hlcss+'.css') %>
+    <%- css('css/jquery.fancybox.min.css') %>
+    <%- css('styl/main') %>
+    <% if(!is_post()){ %>
+    <%- css('styl/pagination') %>
+    <% } %>
+    <% if (is_archive()){ %>
+    <%- css('styl/archive') %>
+    <% } %>
+    <% if (is_tag()||is_category()){ %>
+    <%- css('styl/sort') %>
+    <% } %>
+    <%- js('js/jquery.min.js') %>
+    <%- js('js/highlight.min.js') %>
+    <%- js('js/jquery.fancybox.min.js') %>
+    <%- js('js/clipboard.min.js') %>
+    <% if(theme.actions.search_enable){ %>
+        <%- js('js/search.js') %>
+    <% } %>
+</head>
 <body>
     <%- include('_partial/header') %>
     <div class="content">
-        <section class="outer"><%- body %></section>
+        <section class="main" style="padding: 0.625em">
+            <%- body %>
+            <a id="gotop"><i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i></a>
+        </section>
     </div>
     <%- include('_partial/footer') %>
 </body>

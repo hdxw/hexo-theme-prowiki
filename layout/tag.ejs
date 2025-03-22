@@ -1,44 +1,23 @@
-<%- css('styl/tag') %>
-<% if (page.tag){ %>
-    <div class="tag_head">
-        <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>
-        <span><%= page.tag %></span>
-    </div>
-    <br>
-
-    <% page.posts.each(function(post, i){ %>
-        <div class="tag">
-            <div class="tag_title">
-                <a href="<%- url_for(post.link?post.link:post.path) %>">
-                    <%= (config.tag_generator.per_page*(page.current-1)+i+1) + '. ' + post.title %>
-                </a>
-            </div>
-            <% if (post.categories && post.categories.length){ %>
-                <div class="tag_categories">
-                    <%- list_tags(post.categories, {
-                        show_count: false,
-                        transform(str) {
-                          return '<i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>'+str;
-                        }
-                    }) %>
-                </div>
-            <% } %>
-            
-        </div>
-    <% }) %>
-
-    <%- partial('_partial/turn_page') %>
-    
-<% }else{ %>
-    <div class="tag_index">
-        <% if (site.tags.length) { %>
-            <%- js('/js/tagcloud.js') %>
-            <%- js('/js/tagcanvas.js') %>
-            <div id="myCanvasContainer" class="widget tagcloud">
-                <canvas width="250" height="250" id="resCanvas" style="width:100%">
-                <%- tagcloud() %>
-                </canvas>
-            </div>
-        <% } %>
-    </div>
+<% if(page.posts.length > 10) { %>
+    <%- partial('_widget/pagination') %>
 <% } %>
+<div class="sort-head">
+    <h2><i class="far fa-hashtag" aria-hidden="true"></i> <%= page.tag %></h2>
+    <hr>
+</div>
+<% let offset = config.tag_generator.per_page*(page.current-1);
+page.posts.each(function(post, i){ %>
+<div class="sort-post">
+    <a><%= offset+i+1 %>.</a>
+    <%- partial('_widget/post_link', {post:post}) %>
+    <div class="sort-list">
+    <% post.tags.each(function(tag, i){ %>
+        <a class="sort-item" href="<%= url_for(tag.path) %>">
+            <i class="far fa-hashtag" aria-hidden="true"></i>
+            <span><%= tag.name %></span>
+        </a>
+    <% }) %>
+    </div>
+</div>
+<% }) %>
+<%- partial('_widget/pagination') %>
