@@ -2,7 +2,7 @@
 
 hexo主题，随缘更新。
 
-![Static Badge](https://img.shields.io/badge/ProWiki-2.0.0-blue?labelColor=%233F3B3A&color=%233fb)![Static Badge](https://img.shields.io/badge/hexo-7.3.0-blue?logo=hexo)
+![Static Badge](https://img.shields.io/badge/hexo-7.3.0-blue?logo=hexo)![Static Badge](https://img.shields.io/badge/ProWiki-2.0-blue?labelColor=%233F3B3A&color=%233fb)
 
 # 主题安装
 
