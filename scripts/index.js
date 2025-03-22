@@ -116,28 +116,6 @@ if(menuMap.has(hexo.config.category_dir)){
             data: locals,
             layout: ["category-index"],
         };
-    //   categoryDir = config.category_dir;
-    // if (categoryDir[categoryDir.length - 1] !== '/') {
-    //   categoryDir += '/';
-    // }
-
-    // pages.push({
-    //     path: categoryDir,
-    //     layout: ['category-index'],
-    //     posts: locals.posts,
-    //     data: {
-    //     base: categoryDir,
-    //     total: 1,
-    //     current: 1,
-    //     current_url: categoryDir,
-    //     posts: locals.posts,
-    //     prev: 0,
-    //     prev_link: '',
-    //     next: 0,
-    //     next_link: '',
-    //     categories: categories
-    //     }
-    // });
     });
 }
 // 自定义“友链”模板，单页面
