@@ -103,6 +103,7 @@ function show_right(){
 $("button.btn-search").click(function(sb) {
     $(".search-overlay").css("display","block");
     $(this).hide();
+    $(".search-input").focus();
 });
 $(".search-overlay").click(function() {
     $(this).hide();
