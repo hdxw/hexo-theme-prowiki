@@ -15,9 +15,11 @@ if (is_archive()){
         }
     }
 }else if(is_category()){
-    page_path = config.category_dir+'/'+page.category;
+    let category_val = config.category_map[page.category];
+    page_path = config.category_dir+'/'+(category_val?category_val:page.category);
 }else if(is_tag()){
-    page_path = config.tag_dir+'/'+page.tag;
+    let tag_val = config.tag_map[page.tag];
+    page_path = config.tag_dir+'/'+(tag_val?tag_val:page.tag);
 }
 %>
 <div class="pagination">
