@@ -200,11 +200,15 @@ function traverseCategory(arr, cid, idPath, callback){
         if(category.id===cid){
             idPath.push(`<a onclick="loadCategoryId('${category.id}')">${category.name}</a>`);
             callback(idPath, category.children);
+            return;
         }else if(category.children.length > 0){
             idPath.push(`<a onclick="loadCategoryId('${category.id}')">${category.name}</a>`);
             traverseCategory(category.children, cid, idPath, callback);
+        }else{
+            // 继续遍历
         }
     }
+    idPath.pop();// 遍历children无结果，回退一层
 }
 // 查找category id并加载
 function loadCategoryId(cid){
