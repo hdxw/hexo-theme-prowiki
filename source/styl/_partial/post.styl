@@ -212,16 +212,23 @@
   position: fixed
   top: 5em
   bottom: 3em
+  overflow-x: hidden
   overflow-y: scroll
+  // 相对于 中间60%宽0.625em padding的content 的左对齐位置
   margin-left: calc(60% - 0.625em)
+  // 限制toc最大宽度不超出屏幕(100%)
+  max-width: 20%
+  // 右侧预留text-indent宽度空白，与左边缩进对称
+  padding-right: 1em
   z-index: 6
   .toc, >.toc-item
     list-style-type: none
+    // toc-item右边添加1em空白
+    min-width: calc(100% + 1em)
     background-color: var(--trans-back-color)
     .on
       color: var(--toc-text-color)
     .toc-link
-      width: calc(100% - 1.5em)
       white-space: nowrap
       overflow: hidden
       text-overflow: ellipsis
